@@ -1,0 +1,125 @@
+/* Reset di base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0; /* Rimuove il margine del body */
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Impiliamo gli elementi in verticale */
+    justify-content: center; /* Centra verticalmente */
+    align-items: center; /* Centratura orizzontale */
+    height: 100vh;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    position: relative;
+    overflow: hidden; /* Previene scrollbar inutili */
+}
+
+/* Contenitore per il form */
+.container {
+    display: flex;
+    flex-direction: column; /* Impiliamo gli elementi in verticale */
+    align-items: center; /* Allinea il contenuto al centro */
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
+}
+
+form {
+    width: 100%; /* Il form occupa tutta la larghezza disponibile */
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Aggiungi specifiche per il textarea */
+textarea {
+    min-height: 100px; /* Imposta un'altezza minima */
+    max-height: 200px; /* Imposta un'altezza massima per evitare che diventi troppo grande */
+    resize: vertical; /* Permette di ridimensionare solo in verticale */
+    width: 100%; /* Rende la textarea larga quanto il form */
+    box-sizing: border-box; /* Include padding e border nelle dimensioni totali */
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px 15px;
+    border: none;
+    background: #28a745;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #218838;
+}
+
+canvas {
+    margin-top: 20px;
+    background: white;
+    border: 1px solid #ccc;
+}
+
+/* Canvas specifico per gli articoli */
+#articoloCanvas {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Manda il canvas in background */
+    background-color: #f0f0f0; /* Puoi cambiare il colore se serve */
+}
+
+/* Responsività per dispositivi mobili */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    form {
+        width: 100%; /* Il form occupa tutto lo spazio disponibile */
+        padding: 10px;
+    }
+
+    canvas {
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* Responsività per schermi più piccoli, come smartphone */
+@media (max-width: 480px) {
+    form {
+        padding: 5px;
+    }
+}

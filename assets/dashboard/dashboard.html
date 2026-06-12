@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>CMS Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <h2>CMS</h2>
+
+        <button onclick="loadSection('articoli')">Articoli</button>
+        <button onclick="loadSection('documenti')">Documenti</button>
+        <button onclick="loadSection('utenti')">Utenti</button>
+
+        <hr>
+
+        <button id="logoutBtn" class="logout">Logout</button>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main" id="main">
+        <h2>Dashboard</h2>
+        <p>Seleziona una sezione</p>
+    </main>
+
+</div>
+
+<script src="dashboard.js"></script>
+<script src="articoli/articoli.js"></script>
+</body>
+</html>

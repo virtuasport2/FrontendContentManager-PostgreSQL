@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+
+    <canvas id="loginCanvas"></canvas>
+
+    <div class="container">
+        <div class="card">
+
+            <h2>Login</h2>
+
+            <label for="email">Email address</label>
+            <input type="email" id="email" placeholder="Your email address">
+
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Your password">
+
+            <!-- ❌ niente onclick -->
+            <button id="loginBtn">Accedi</button>
+
+            <div class="oauth-buttons">
+                <button onclick="handleOAuth('google')">
+                    <img src="loghi/logo_google.svg" alt="Google" class="oauth-logo">
+                </button>
+
+                <button onclick="handleOAuth('facebook')">
+                    <img src="loghi/logo_facebook.svg" alt="Facebook" class="oauth-logo">
+                </button>
+            </div>
+
+               
+            <p>
+                Non hai un account?
+                <a href="register/register.html">Registrati</a>
+            </p>
+
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="login_canvas.js"></script>
+    <script src="login_form.js"></script>
+
+</body>
+</html>

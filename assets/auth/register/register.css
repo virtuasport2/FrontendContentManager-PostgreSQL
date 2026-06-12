@@ -1,0 +1,60 @@
+/* Layout pagina register */
+.register-body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+/* Card register (stessa logica login) */
+.register-card {
+    background-color: rgb(192, 156, 156);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 500px;
+}
+
+/* Titolo */
+.register-card h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Label */
+.register-card label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Input */
+.register-card input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Button */
+.register-card button {
+    margin-top: 15px;
+    padding: 10px 15px;
+    border: none;
+    background: #414858;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.register-card button:hover {
+    background: #218838;
+}

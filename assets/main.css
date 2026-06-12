@@ -1,0 +1,199 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background: #1b1b1b;
+    color: #fff;
+    line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+    background: linear-gradient(45deg, #ff5e62, #ff9966);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:10px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.navbar .menu {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar .menu li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.navbar .menu li a:hover {
+    color: #ff5e62;
+}
+
+.navbar .login-btn {
+    background-color: #ff5e62;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.navbar .login-btn:hover {
+    background-color: #ff9966;
+}
+
+.navbar .logout-btn {
+    background-color: #ff5e62;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.navbar .logout-btn:hover {
+    background-color: #ff9966;
+}
+
+
+
+/* Slider */
+.slider {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    margin-top: 30px;
+}
+
+.slide-container {
+    display: flex;
+    width: 100%; /* Ogni immagine occupa il 100% della larghezza */
+    transition: transform 0.5s ease-in-out;
+    margin: 0;
+    padding: 0;
+}
+
+.slide {
+    flex: 0 0 33.33%; /* Ogni immagine occupa un terzo della larghezza del contenitore */
+    padding: 0;
+}
+
+img {
+    width: 100%; /* Ogni immagine si adatta al suo contenitore */
+    height: 100%;  /* Aggiungi questa riga per assicurarti che l'immagine abbia la stessa altezza */
+    object-fit: cover; /* Mantieni l'aspetto corretto delle immagini */
+    border-radius: 8px; /* Se vuoi aggiungere angoli arrotondati alle immagini */
+}
+
+.prev {
+    left: 20px;
+}
+
+.next {
+    right: 20px;
+}
+
+button.prev, button.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+button.prev:hover, button.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+
+/* Card Container */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 30px 20px;
+}
+
+.card {
+    background: #2e2e2e;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 20px;
+    color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    background-color: #ff5e62;
+}
+
+.card:nth-child(even) {
+    background: #3e3e3e;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    .navbar .menu {
+        display: none;
+    }
+
+    .navbar .signup {
+        margin-left: 10px;
+    }
+
+    .card-container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .slider img {
+        max-height: 300px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .card-container {
+        grid-template-columns: 1fr;
+    }
+
+    .slider img {
+        max-height: 200px;
+    }
+
+    .navbar .logo {
+        font-size: 20px;
+    }
+}
+
+.hidden {
+    display: none;
+}

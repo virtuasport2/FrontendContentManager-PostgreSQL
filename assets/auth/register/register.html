@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrazione</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+
+
+<body class="register-body">
+
+    <div class="register-card">
+        <h2>Registrazione</h2>
+
+        <input type="text" id="username" placeholder="Username">
+        <input type="email" id="email" placeholder="Email">
+        <input type="password" id="password" placeholder="Password">
+
+      
+        <button id="registerBtn">Registrati</button>
+        <div class="oauth-buttons">
+            <button onclick="handleOAuth('google')">Registrati con Google</button>
+            <button onclick="handleOAuth('facebook')">Registrati con Facebook</button>
+        </div>
+
+        <p>Hai già un account? <a href="login.html">Accedi</a></p>
+    </div>
+    
+    <!-- JS -->
+    <script src="register.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creazione Documento</title>
+    <link rel="stylesheet" href="documento.css">
+</head>
+<body>
+    <canvas id="documentoCanvas"></canvas> <!-- Il canvas è il primo elemento del body -->
+    <div class="container">
+        <h1>Crea un Nuovo Documento</h1>
+        <form id="documento-form">
+            <label for="nome">Nome Documento:</label>
+            <input type="text" id="nome" required><br>
+
+            <label for="tipo">Tipo:</label>
+            <input type="text" id="tipo" required><br>
+
+            <label for="descrizione">Descrizione:</label>
+            <textarea id="descrizione"></textarea><br>
+
+            <button type="submit">Salva Documento</button>
+        </form>
+    </div>
+    
+    <!-- Tasto per creare un articolo, visibile solo dopo aver salvato il documento -->
+    <div id="tasto-articolo" style="display: none;">
+        <button id="aggiungi-articolo">+ Articolo</button>
+    </div>
+
+    <!-- Inclusione dei file JS -->
+    <script src="documento_canvas.js"></script>
+    <script src="documento_form.js"></script> <!-- Questo file gestisce la logica del form -->
+</body>
+</html>
