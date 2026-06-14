@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Nuovo Articolo</title>
+
+    <link rel="stylesheet" href="articolo-form.css">
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Nuovo Articolo</h2>
+
+    <label>Titolo</label>
+    <input type="text" id="titolo">
+
+    <label>Sottotitolo</label>
+    <input type="text" id="sottotitolo">
+
+    <div class="row">
+        <div>
+            <label>Categoria</label>
+            <input type="text" id="categoria">
+        </div>
+
+        <div>
+            <label>Visibilità</label>
+            <select id="visibilita">
+                <option value="true">Pubblico</option>
+                <option value="false">Privato</option>
+            </select>
+        </div>
+    </div>
+
+    <label>Testo</label>
+    <textarea id="testo" rows="8"></textarea>
+
+    <button onclick="salvaArticolo()">Salva</button>
+    <button onclick="tornaIndietro()">Indietro</button>
+</div>
+
+<script src="articolo-form.js"></script>
+
+</body>
+</html>

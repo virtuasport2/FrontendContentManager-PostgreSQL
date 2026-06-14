@@ -77,7 +77,11 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       const target = card.dataset.target;
-      window.location.href = `/dashboard/${target}.html`;
+      if (!target) {
+        console.error("Card senza data-target", card);
+        return;
+      }
+      window.location.href = `dashboard/${target}.html`;
     });
   });
 });
