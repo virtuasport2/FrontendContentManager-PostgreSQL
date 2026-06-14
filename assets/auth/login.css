@@ -12,7 +12,7 @@ body {
     flex-direction: column; /* Impiliamo gli elementi in verticale */
     justify-content: center; /* Centra verticalmente */
     align-items: center; /* Centratura orizzontale */
-    height: 100vh;
+    min-height: 100vh;
     background-color: #f0f0f0;
     font-family: Arial, sans-serif;
     position: relative;
@@ -38,12 +38,14 @@ h1 {
 
 /* Stile per la card di login */
 .card {
-    background-color: rgb(192, 156, 156);   /* Colore di sfondo bianco */
-    padding: 30px;              /* Spazio interno */
-    border-radius: 10px;        /* Bordi arrotondati */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombra leggera */
-    width: 500px;               /* Larghezza fissa */
-}   
+    background-color: rgb(192, 156, 156);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    width: 100%;
+    max-width: 500px;
+}
 
 label {
     display: block;
