@@ -1,47 +1,79 @@
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
 
+/* LAYOUT */
 .layout {
-    display: flex;
-    height: 100vh;
+  display: flex;
+  height: 100vh;
 }
 
-/* SIDEBAR */
+/* SIDEBAR (DESKTOP) */
 .sidebar {
-    width: 220px;
-    background: #1f2937;
-    color: white;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  min-width: 250px;
+  width: 220px;
+  background: #1f2937;
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .sidebar button {
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    background: #374151;
-    color: white;
-    text-align: left;
-    border-radius: 5px;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  background: #374151;
+  color: white;
+  text-align: left;
+  border-radius: 5px;
 }
 
 .sidebar button:hover {
-    background: #4b5563;
+  background: #4b5563;
 }
 
 /* MAIN */
 .main {
-    flex: 1;
-    padding: 20px;
-    background: #f3f4f6;
+  flex: 1;
+  padding: 20px;
+  background: #f3f4f6;
 }
 
 /* LOGOUT */
 .logout {
-    margin-top: auto;
-    background: #ef4444 !important;
+  margin-top: auto;
+  background: #ef4444 !important;
+}
+
+/* MENU BUTTON (DESKTOP OFF) */
+.menu-btn {
+  display: none;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+  .layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    display: none;
+    width: 100%;
+  }
+
+  .sidebar.active {
+    display: flex;
+  }
+
+  .main {
+    width: 100%;
+  }
+
+  .menu-btn {
+    display: block;
+  }
 }
