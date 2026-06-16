@@ -70,6 +70,14 @@ body {
     display: flex;
   }
 
+
+.sidebar button {
+    font-size: 18px;
+    padding: 14px;
+  }
+
+
+
   .main {
     width: 100%;
   }
