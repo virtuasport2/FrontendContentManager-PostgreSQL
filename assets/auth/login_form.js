@@ -40,10 +40,10 @@ window.addEventListener("DOMContentLoaded", () => {
       alert("Login OK");
 
       window.location.href = "../index.html";
-    } catch (err) {
+    } catch (err) {// gestione errore
       console.error(err);
       alert("Errore login");
-    }finally {
+    }finally {// esegui sempre
        isLoggingIn = false;
      }
     
