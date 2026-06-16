@@ -6,7 +6,12 @@ window.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
+  let isLoggingIn = false;
+
   btn.addEventListener("click", async () => {
+   if (isLoggingIn) return;
+   isLoggingIn = true;
+    
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
@@ -38,6 +43,9 @@ window.addEventListener("DOMContentLoaded", () => {
     } catch (err) {
       console.error(err);
       alert("Errore login");
-    }
+    }finally {
+       isLoggingIn = false;
+     }
+    
   });
 });
