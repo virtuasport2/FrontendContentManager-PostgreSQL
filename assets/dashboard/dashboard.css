@@ -48,11 +48,6 @@ body {
   background: #ef4444 !important;
 }
 
-/* MENU BUTTON (DESKTOP OFF) */
-.menu-btn {
-  display: none;
-}
-
 .actions button {
     font-size: 1rem;
 }
@@ -66,7 +61,7 @@ body {
   }
 
   .sidebar {
-    display: none;
+    display: flex;
     width: 100%;
   }
 
