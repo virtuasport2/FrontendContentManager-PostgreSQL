@@ -30,8 +30,6 @@ function renderArticoli(main, articoli, token) {
 
         <button onclick="createArticolo()">+ Nuovo Articolo</button>
 
-        <div class="table-container">
-        
         <table border="1" width="100%" style="margin-top:10px;">
             <thead>
                 <tr>
@@ -45,7 +43,7 @@ function renderArticoli(main, articoli, token) {
             </thead>
             <tbody>
        </table>
-  </div>
+
 `;
 
   articoli.forEach((a) => {
