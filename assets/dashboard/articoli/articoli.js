@@ -30,7 +30,7 @@ function renderArticoli(main, articoli, token) {
 
         <button onclick="createArticolo()">+ Nuovo Articolo</button>
 
-        <table border="1" width="100%" style="margin-top:10px;">
+        
             <thead>
                 <tr>
                     <th>ID</th>
@@ -42,7 +42,7 @@ function renderArticoli(main, articoli, token) {
                 </tr>
             </thead>
             <tbody>
-       </table>
+       
 
 `;
 
