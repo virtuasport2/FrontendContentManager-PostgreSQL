@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const token = localStorage.getItem("token");
 
   if (!token) {
-    window.location.href = "auth/login.html";
+    window.location.href = "../auth/login.html";
     return;
   }
 
@@ -17,7 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // 🚪 LOGOUT
   logoutBtn.addEventListener("click", () => {
     localStorage.removeItem("token");
-    window.location.href = "auth/login.html";
+   // window.location.href = "../auth/login.html";
+   window.location.replace("../auth/login.html"); //replace → NON lascia il login nello storico (più pulito per login)
   });
 
   // 🧭 ROUTER SEMPLICE (entry point sezioni)

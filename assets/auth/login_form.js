@@ -39,7 +39,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
       alert("Login OK");
 
-      window.location.href = "../index.html";
+      //window.location.href = "../index.html";   href → aggiunge storico (BACK torna al login)
+        window.location.replace("../index.html");  //replace → NON lascia il login nello storico (più pulito per login)
     } catch (err) {// gestione errore
       console.error(err);
       alert("Errore login");
