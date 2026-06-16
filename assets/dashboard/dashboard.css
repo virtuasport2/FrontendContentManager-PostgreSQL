@@ -3,6 +3,10 @@ body {
   font-family: Arial, sans-serif;
 }
 
+input, button, select, textarea {
+  font-size: 16px;
+}
+
 /* LAYOUT */
 .layout {
   display: flex;
