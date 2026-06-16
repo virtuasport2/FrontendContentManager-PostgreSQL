@@ -48,10 +48,12 @@ body {
   background: #ef4444 !important;
 }
 
-/* MENU BUTTON (DESKTOP OFF) */
-.menu-btn {
-  display: none;
+
+
+.actions button {
+    font-size: 1rem;
 }
+
 
 /* MOBILE */
 @media (max-width: 768px) {
@@ -72,6 +74,10 @@ body {
   .main {
     width: 100%;
   }
+
+ .actions button {
+        font-size: 1.1rem;
+    }
 
   .menu-btn {
     display: block;
