@@ -34,7 +34,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
       alert("Login OK");
 
-      window.location.href = "/assets/index.html";
+      window.location.href = "../index.html";
     } catch (err) {
       console.error(err);
       alert("Errore login");
