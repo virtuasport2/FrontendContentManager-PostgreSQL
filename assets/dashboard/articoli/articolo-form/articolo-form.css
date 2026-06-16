@@ -5,6 +5,11 @@ body {
     background: #f4f6f9;
 }
 
+/*  TABELE CONTAINER */
+.table-container {
+  overflow-x: auto;
+}
+
 /* CONTENITORE PRINCIPALE */
 .container {
     max-width: 800px;
