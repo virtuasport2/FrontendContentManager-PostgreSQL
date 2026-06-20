@@ -17,7 +17,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const password = document.getElementById("password").value;
 
         try {
-            const response = await fetch("https://api-content-manager-postgresql.onrender.com/api/utenti", {
+            const response = await fetch(`${CONFIG.API_BASE_URL}/api/utenti`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

@@ -11,9 +11,16 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
+
+
+
+
   const main = document.getElementById("main");
   const logoutBtn = document.getElementById("logoutBtn");
 
+
+
+  
   // 🚪 LOGOUT
   logoutBtn.addEventListener("click", () => {
     localStorage.removeItem("token");

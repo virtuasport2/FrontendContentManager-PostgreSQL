@@ -66,9 +66,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   const cards = document.querySelectorAll(".card");
-
   cards.forEach((card) => {
-    card.addEventListener("click", () => {
+    card.addEventListener("click", async () => {
       const token = localStorage.getItem("token");
 
       if (!token) {
@@ -76,11 +75,32 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
+      try {
+        const res = await fetch(`${CONFIG.API_BASE_URL}/api/me`, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (res.status === 401) {
+          localStorage.removeItem("token");
+          window.location.href = "auth/login.html";
+          return;
+        }
+      } catch (err) {
+        console.error(err);
+        window.location.href = "auth/login.html";
+        return;
+      }
+
       const target = card.dataset.target;
+
       if (!target) {
         console.error("Card senza data-target", card);
         return;
       }
+
       window.location.href = `dashboard/${target}.html`;
     });
   });
