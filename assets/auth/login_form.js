@@ -7,7 +7,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   let isLoggingIn = false;
-  const CONFIG = window.__CONFIG__;
+
   btn.addEventListener("click", async () => {
     if (isLoggingIn) return;
     isLoggingIn = true;
