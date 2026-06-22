@@ -31,7 +31,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 throw new Error("Registrazione fallitas");
             }
 
-            window.location.href = "../../index.html";
+            window.location.href = "/assets/index.html";
 
         } catch (err) {
             console.error(err);

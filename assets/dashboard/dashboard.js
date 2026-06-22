@@ -3,60 +3,61 @@ function toggleMenu() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  // 🔐 CHECK AUTENTICAZIONE
+  alert("JS DASHBOARD PARTITO");
+  setTimeout(() => {
+    console.log("TOKEN CHECK:", localStorage.getItem("token"));
+  }, 5000);
+
   const token = localStorage.getItem("token");
+  console.log("ORIGIN:", window.location.origin);
+  console.log("TOKEN RAW:", localStorage.getItem("token"));
+  console.log("LOCALSTORAGE FULL:", { ...localStorage });
+  console.log("DASHBOARD JS CARICATO");
+
+  console.log("DASHBOARD TOKEN:", token);
 
   if (!token) {
-    window.location.href = "../auth/login.html";
+    window.location.href = "assets/auth/login.html";
     return;
   }
-
-
-
-
 
   const main = document.getElementById("main");
   const logoutBtn = document.getElementById("logoutBtn");
 
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+      localStorage.removeItem("token");
+      window.location.replace("/assets/auth/login.html");
+    });
+  }
 
-
-  
-  // 🚪 LOGOUT
-  logoutBtn.addEventListener("click", () => {
-    localStorage.removeItem("token");
-   // window.location.href = "../auth/login.html";
-   window.location.replace("../auth/login.html"); //replace → NON lascia il login nello storico (più pulito per login)
-  });
-
-  // 🧭 ROUTER SEMPLICE (entry point sezioni)
   window.loadSection = function (section) {
+    if (!main) return;
+
     switch (section) {
       case "articoli":
         if (typeof loadArticoli === "function") {
           loadArticoli(main, token);
-        } else {
-          main.innerHTML = "<h2>Articoli module non caricato</h2>";
         }
         break;
 
       case "documenti":
         if (typeof loadDocumenti === "function") {
           loadDocumenti(main, token);
-        } else {
-          main.innerHTML = "<h2>Documenti module non caricato</h2>";
+        }
+        break;
+
+      case "tipidocumento":
+        if (typeof loadTipiDocumento === "function") {
+          loadTipiDocumento(main, token);
         }
         break;
 
       case "utenti":
         if (typeof loadUtenti === "function") {
           loadUtenti(main, token);
-        } else {
-          main.innerHTML = "<h2>Utenti module non caricato</h2>";
         }
         break;
-
-      default:
-        main.innerHTML = "<h2>Sezione non trovata</h2>";
     }
   };
 });

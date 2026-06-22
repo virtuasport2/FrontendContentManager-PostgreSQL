@@ -1,7 +1,10 @@
+
+const CONFIG = window.__CONFIG__; 
 // LOAD
-async function loadTipoDocumenti(main, token) {
+async function loadTipiDocumento(main, token) {
   main.innerHTML = "<h2>Tipi Documento</h2><p>Caricamento...</p>";
 
+  
   try {
     const response = await fetch(`${CONFIG.API_BASE_URL}/api/tipi-documento`, {
       headers: {
@@ -57,7 +60,7 @@ function renderTipoDocumenti(main, tipi, token) {
           <td>${t.id}</td>
           <td>${t.nome}</td>
           <td>${t.descrizione ?? ""}</td>
-          <td>${t.creato_da ?? ""}</td>
+          <td>${t.creatoDa.username ?? ""}</td>
           <td>
             <button onclick="viewTipoDocumento(${t.id})">View</button>
             <button onclick="editTipoDocumento(${t.id})">Edit</button>
@@ -123,7 +126,7 @@ window.deleteTipoDocumento = async function (id) {
 // - CREATE
 window.createTipoDocumento = function () {
   window.location.href =
-    "/assets/dashboard/tipo-documento/tipo-documento-form.html";
+    "/assets/dashboard/tipidocumento/tipidoc-form/tipidoc-form.html";
 };
 
 // - EDIT

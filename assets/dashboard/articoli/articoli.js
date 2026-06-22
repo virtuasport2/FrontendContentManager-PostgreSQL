@@ -1,6 +1,7 @@
 async function loadArticoli(main, token) {
   main.innerHTML = "<h2>Articoli</h2><p>Caricamento...</p>";
 
+  const CONFIG = window.__CONFIG__;
   try {
     const response = await fetch(`${CONFIG.API_BASE_URL}/api/articoli`, {
       headers: {
@@ -142,19 +143,16 @@ window.editArticolo = async function (id) {
   if (!nuovoTitolo) return;
 
   try {
-    const res = await fetch(
-      `${CONFIG.API_BASE_URL}/api/articoli/${id}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + token,
-        },
-        body: JSON.stringify({
-          titolo: nuovoTitolo,
-        }),
+    const res = await fetch(`${CONFIG.API_BASE_URL}/api/articoli/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
       },
-    );
+      body: JSON.stringify({
+        titolo: nuovoTitolo,
+      }),
+    });
 
     if (!res.ok) throw new Error("Errore update");
 
