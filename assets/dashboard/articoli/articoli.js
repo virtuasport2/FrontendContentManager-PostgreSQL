@@ -1,15 +1,13 @@
 async function loadArticoli(main, token) {
   main.innerHTML = "<h2>Articoli</h2><p>Caricamento...</p>";
 
+  const CONFIG = window.__CONFIG__;
   try {
-    const response = await fetch(
-      "https://api-content-manager-postgresql.onrender.com/api/articoli",
-      {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
+    const response = await fetch(`${CONFIG.API_BASE_URL}/api/articoli`, {
+      headers: {
+        Authorization: "Bearer " + token,
       },
-    );
+    });
 
     if (!response.ok) {
       throw new Error("Errore caricamento articoli");
@@ -78,14 +76,11 @@ window.viewArticolo = async function (id) {
   const token = localStorage.getItem("token");
 
   try {
-    const res = await fetch(
-      "https://api-content-manager-postgresql.onrender.com/api/articoli/" + id,
-      {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
+    const res = await fetch(`${CONFIG.API_BASE_URL}/api/articoli/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
       },
-    );
+    });
 
     const a = await res.json();
 
@@ -115,15 +110,12 @@ window.deleteArticolo = async function (id) {
   if (!confirm("Eliminare articolo?")) return;
 
   try {
-    const res = await fetch(
-      "https://api-content-manager-postgresql.onrender.com/api/articoli/" + id,
-      {
-        method: "DELETE",
-        headers: {
-          Authorization: "Bearer " + token,
-        },
+    const res = await fetch(`${CONFIG.API_BASE_URL}/api/articoli/${id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: "Bearer " + token,
       },
-    );
+    });
 
     if (!res.ok) throw new Error("Errore delete");
 
@@ -133,15 +125,13 @@ window.deleteArticolo = async function (id) {
   }
 };
 
-
 /* =========================
    CREATE
 ========================= */
 window.createArticolo = function () {
-
-     window.location.href = "/assets/dashboard/articoli/articolo-form/articolo-form.html";
+  window.location.href =
+    "/assets/dashboard/articoli/articolo-form/articolo-form.html";
 };
-
 
 /* =========================
    EDIT (semplice demo)
@@ -153,19 +143,16 @@ window.editArticolo = async function (id) {
   if (!nuovoTitolo) return;
 
   try {
-    const res = await fetch(
-      "https://api-content-manager-postgresql.onrender.com/api/articoli/" + id,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + token,
-        },
-        body: JSON.stringify({
-          titolo: nuovoTitolo,
-        }),
+    const res = await fetch(`${CONFIG.API_BASE_URL}/api/articoli/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
       },
-    );
+      body: JSON.stringify({
+        titolo: nuovoTitolo,
+      }),
+    });
 
     if (!res.ok) throw new Error("Errore update");
 

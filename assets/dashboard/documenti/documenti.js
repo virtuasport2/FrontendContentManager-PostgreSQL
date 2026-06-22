@@ -1,6 +1,7 @@
 
 async function loadDocumenti(main, token) {
   main.innerHTML = "<h2>Documenti</h2><p>Caricamento...</p>";
+  const CONFIG = window.__CONFIG__;
 
   try {
     const response = await fetch(

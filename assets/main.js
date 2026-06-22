@@ -45,12 +45,12 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   loginButton.addEventListener("click", () => {
-    window.location.href = "auth/login.html";
+    window.location.href = "/assets/auth/login.html";
   });
 
   logoutButton.addEventListener("click", () => {
     localStorage.removeItem("token");
-    window.location.href = "auth/login.html";
+    window.location.href = "/assets/auth/login.html";
   });
 
   // Aggiungere l'animazione al passaggio del cursore
@@ -66,22 +66,47 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   const cards = document.querySelectorAll(".card");
+  const CONFIG = window.__CONFIG__;
 
   cards.forEach((card) => {
-    card.addEventListener("click", () => {
+    card.addEventListener("click", async () => {
       const token = localStorage.getItem("token");
 
+      
       if (!token) {
-        window.location.href = "auth/login.html";
+        window.location.href = "/assets/auth/login.html";
+        return;
+      } 
+
+      try {
+        const res = await fetch(`${CONFIG.API_BASE_URL}/api/me`, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        console.log("STATUS:", res.status); 
+        if (res.status === 401) {
+          localStorage.removeItem("token");
+          window.location.href = "/assets/auth/login.html";
+          return;
+        }
+      } catch (err) {
+        console.error(err);
+        window.location.href = "/assets/auth/login.html";
         return;
       }
 
       const target = card.dataset.target;
+
       if (!target) {
         console.error("Card senza data-target", card);
         return;
       }
-      window.location.href = `dashboard/${target}.html`;
+
+
+      window.location.href = `/assets/dashboard/${target}.html`;
     });
   });
 });
