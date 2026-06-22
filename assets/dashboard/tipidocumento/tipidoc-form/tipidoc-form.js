@@ -10,7 +10,7 @@ function getToken() {
 /* =========================
    CREATE (SALVA DOCUMENTO)
 ========================= */
-async function salvaDocumento() {
+async function salvaTipiDoc() {
   const token = getToken();
 
 

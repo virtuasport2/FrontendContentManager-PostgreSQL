@@ -1,11 +1,12 @@
 
-const CONFIG = window.__CONFIG__; 
+
 // LOAD
 async function loadTipiDocumento(main, token) {
   main.innerHTML = "<h2>Tipi Documento</h2><p>Caricamento...</p>";
 
   
   try {
+    const CONFIG = window.__CONFIG__; 
     const response = await fetch(`${CONFIG.API_BASE_URL}/api/tipi-documento`, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -83,6 +84,7 @@ function renderTipoDocumenti(main, tipi, token) {
 
 // - VIEW
 window.viewTipoDocumento = async function (id) {
+  const CONFIG = window.__CONFIG__; 
   const token = localStorage.getItem("token");
 
   const res = await fetch(`${CONFIG.API_BASE_URL}/api/tipi-documento/${id}`, {
@@ -107,6 +109,7 @@ window.viewTipoDocumento = async function (id) {
 
 // - DELETE
 window.deleteTipoDocumento = async function (id) {
+  const CONFIG = window.__CONFIG__; 
   const token = localStorage.getItem("token");
 
   if (!confirm("Eliminare tipo documento?")) return;
@@ -125,12 +128,14 @@ window.deleteTipoDocumento = async function (id) {
 
 // - CREATE
 window.createTipoDocumento = function () {
+  const CONFIG = window.__CONFIG__; 
   window.location.href =
     "/assets/dashboard/tipidocumento/tipidoc-form/tipidoc-form.html";
 };
 
 // - EDIT
 window.editTipoDocumento = async function (id) {
+  const CONFIG = window.__CONFIG__; 
   const token = localStorage.getItem("token");
 
   const nuovoNome = prompt("Nuovo nome tipo documento:");
