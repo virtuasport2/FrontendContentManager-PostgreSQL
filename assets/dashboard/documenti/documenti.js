@@ -1,17 +1,13 @@
-
 async function loadDocumenti(main, token) {
   main.innerHTML = "<h2>Documenti</h2><p>Caricamento...</p>";
   const CONFIG = window.__CONFIG__;
 
   try {
-    const response = await fetch(
-      "https://api-content-manager-postgresql.onrender.com/api/documenti",
-      {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      }
-    );
+    const response = await fetch(`${CONFIG.API_BASE_URL}/api/documenti`, {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    });
 
     console.log("STATUS:", response.status);
 
@@ -25,7 +21,6 @@ async function loadDocumenti(main, token) {
     const documenti = text ? JSON.parse(text) : [];
 
     renderDocumenti(main, documenti, token);
-
   } catch (err) {
     console.error(err);
     main.innerHTML = "<p>Errore nel caricamento documenti</p>";
@@ -33,7 +28,6 @@ async function loadDocumenti(main, token) {
 }
 
 function renderDocumenti(main, documenti, token) {
-
   let html = `
     <h2>Documenti</h2>
 
@@ -60,7 +54,7 @@ function renderDocumenti(main, documenti, token) {
       </tr>
     `;
   } else {
-    documenti.forEach(d => {
+    documenti.forEach((d) => {
       html += `
         <tr>
           <td>${d.id}</td>
@@ -99,21 +93,27 @@ window.viewDocumento = async function (id) {
         headers: {
           Authorization: "Bearer " + token,
         },
-      }
+      },
     );
 
     const d = await res.json();
 
     alert(
-      "ID: " + d.id +
-      "\nNome: " + d.nome +
-      "\nDescrizione: " + (d.descrizione ?? "") +
-      "\nTipo: " + d.tipo +
-      "\nStato: " + d.stato +
-      "\nTipo ID: " + d.tipo_id +
-      "\nJSON: " + (d.struttura_json ?? "")
+      "ID: " +
+        d.id +
+        "\nNome: " +
+        d.nome +
+        "\nDescrizione: " +
+        (d.descrizione ?? "") +
+        "\nTipo: " +
+        d.tipo +
+        "\nStato: " +
+        d.stato +
+        "\nTipo ID: " +
+        d.tipo_id +
+        "\nJSON: " +
+        (d.struttura_json ?? ""),
     );
-
   } catch (err) {
     console.error(err);
   }
@@ -135,13 +135,12 @@ window.deleteDocumento = async function (id) {
         headers: {
           Authorization: "Bearer " + token,
         },
-      }
+      },
     );
 
     if (!res.ok) throw new Error("Errore delete");
 
     location.reload();
-
   } catch (err) {
     console.error(err);
   }
@@ -176,14 +175,13 @@ window.editDocumento = async function (id) {
         body: JSON.stringify({
           nome: nuovoNome,
         }),
-      }
+      },
     );
 
     console.log("TOKEN:", token);
     if (!res.ok) throw new Error("Errore update");
 
     location.reload();
-
   } catch (err) {
     console.error(err);
   }

@@ -1,5 +1,3 @@
-const API_URL =
-  "https://api-content-manager-postgresql.onrender.com/api/documenti";
 
 /* =========================
    TOKEN
@@ -30,12 +28,16 @@ async function salvaDocumento() {
 
  const payload = {
     nome:            document.getElementById("nome").value,
-    descrizione:     document.getElementById("descrizione").value,
     tipo:            document.getElementById("tipo").value,
-    stato:           document.getElementById("stato").value,
-    tipoDocumentoId: Number(document.getElementById("tipo_id").value),
+    descrizione:     document.getElementById("descrizione").value,
 
-    strutturaJson: JSON.stringify(strutturaJson)
+    strutturaJson:   JSON.stringify(strutturaJson),
+    
+ 
+    stato:           document.getElementById("stato").value,
+    tipoDocumentoId: Number(document.getElementById("tipo_id").value), // ATTENZIONE, il tipo documeto deve esistere, creare una lista dei tipi in db
+
+    
 };
 
 
