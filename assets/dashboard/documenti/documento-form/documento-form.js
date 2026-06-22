@@ -29,17 +29,20 @@ async function salvaDocumento() {
   }
 
  const payload = {
-    nome: document.getElementById("nome").value,
-    descrizione: document.getElementById("descrizione").value,
-    tipo: document.getElementById("tipo").value,
-    stato: document.getElementById("stato").value,
+    nome:            document.getElementById("nome").value,
+    descrizione:     document.getElementById("descrizione").value,
+    tipo:            document.getElementById("tipo").value,
+    stato:           document.getElementById("stato").value,
     tipoDocumentoId: Number(document.getElementById("tipo_id").value),
 
     strutturaJson: JSON.stringify(strutturaJson)
 };
 
+
+  const CONFIG = window.__CONFIG__;
+  
   try {
-    const res = await fetch(API_URL, {
+    const res = await fetch(`${CONFIG.API_BASE_URL}/api/documenti`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -49,6 +52,8 @@ async function salvaDocumento() {
     });
 
     if (!res.ok) {
+      console.log(res.status);
+console.log(res.statusText);
       throw new Error("Errore salvataggio documento");
     }
 

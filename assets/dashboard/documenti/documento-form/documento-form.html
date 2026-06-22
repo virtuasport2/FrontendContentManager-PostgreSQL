@@ -1,53 +1,52 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
-<head>
+  <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Nuovo Documento</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="documento-form.css">
-</head>
+    <link rel="stylesheet" href="documento-form.css" />
+  </head>
 
-<body>
+  <body>
+    <div class="container">
+      <h2>Nuovo Documento</h2>
 
-<div class="container">
-    <h2>Nuovo Documento</h2>
+      <label>Nome</label>
+      <input type="text" id="nome" />
 
-    <label>Nome</label>
-    <input type="text" id="nome">
+      <label>Descrizione</label>
+      <textarea id="descrizione"></textarea>
 
-    <label>Descrizione</label>
-    <textarea id="descrizione"></textarea>
-
-    <div class="row">
+      <div class="row">
         <div>
-            <label>Tipo</label>
-            <input type="text" id="tipo">
+          <label>Tipo</label>
+          <input type="text" id="tipo" />
         </div>
 
         <div>
-            <label>Stato</label>
-            <select id="stato">
-                <option value="bozza">Bozza</option>
-                <option value="pubblicato">Pubblicato</option>
-            </select>
+          <label>Stato</label>
+          <select id="stato">
+            <option value="bozza">Bozza</option>
+            <option value="pubblicato">Pubblicato</option>
+          </select>
         </div>
+      </div>
+
+      <label>Struttura JSON</label>
+      <textarea id="struttura_json"></textarea>
+
+      <label>Tipo Documento (ID)</label>
+      <input type="number" id="tipo_id" />
+
+      <button onclick="salvaDocumento()">Salva</button>
+      <button onclick="tornaIndietro()">Indietro</button>
     </div>
 
-    <label>Struttura JSON</label>
-    <textarea id="struttura_json"></textarea>
-
-    <label>Tipo Documento (ID)</label>
-    <input type="number" id="tipo_id">
-
-    <button onclick="salvaDocumento()">Salva</button>
-    <button onclick="tornaIndietro()">Indietro</button>
-</div>
-
-<!-- JS -->
-<script src="documento-form.js"></script>
-
-</body>
+    <!-- JS -->
+    <script src="/assets/config.js"></script>
+    <script src="documento-form.js"></script>
+  </body>
 </html>
