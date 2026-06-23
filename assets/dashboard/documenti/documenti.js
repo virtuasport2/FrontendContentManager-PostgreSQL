@@ -1,6 +1,7 @@
+
 async function loadDocumenti(main, token) {
   main.innerHTML = "<h2>Documenti</h2><p>Caricamento...</p>";
-  const CONFIG = window.__CONFIG__;
+   const CONFIG = window.__CONFIG__; 
 
   try {
     const response = await fetch(`${CONFIG.API_BASE_URL}/api/documenti`, {
@@ -28,11 +29,23 @@ async function loadDocumenti(main, token) {
 }
 
 function renderDocumenti(main, documenti, token) {
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  let createBtn = "";
+
+  if (user?.ruolo === "admin" || user?.ruolo === "autore") {
+    createBtn = `<button onclick="createDocumento()">+ Crea Documento</button>`;
+  } else {
+    createBtn = `<button disabled style="opacity:0.5">+ Crea Documento</button>`;
+  }
+
+  /*   uso   ${createBtn} al posto di <button onclick="createDocumento()">+ Crea Documento</button>   */
   let html = `
+    
     <h2>Documenti</h2>
-
-    <button onclick="createDocumento()">+ Crea Documento</button>
-
+    
+        ${createBtn}
+  
     <table border="1" width="100%" style="margin-top:10px;">
       <thead>
         <tr>
@@ -55,6 +68,34 @@ function renderDocumenti(main, documenti, token) {
     `;
   } else {
     documenti.forEach((d) => {
+      let actions = `
+        <button onclick="viewDocumento(${d.id})">View</button>
+      `;
+
+      // ADMIN → tutto attivo
+      if (user?.ruolo === "admin") {
+        actions += `
+          <button onclick="editDocumento(${d.id})">Edit</button>
+          <button onclick="deleteDocumento(${d.id})">Delete</button>
+        `;
+      }
+
+      // AUTORE → edit attivo, delete disabilitato
+      else if (user?.ruolo === "autore") {
+        actions += `
+          <button onclick="editDocumento(${d.id})">Edit</button>
+          <button disabled style="opacity:0.5">Delete</button>
+        `;
+      }
+
+      // USER → solo view, resto disabilitato
+      else {
+        actions += `
+          <button disabled style="opacity:0.5">Edit</button>
+          <button disabled style="opacity:0.5">Delete</button>
+        `;
+      }
+
       html += `
         <tr>
           <td>${d.id}</td>
@@ -62,11 +103,7 @@ function renderDocumenti(main, documenti, token) {
           <td>${d.tipo}</td>
           <td>${d.stato}</td>
           <td>${d.tipo_id}</td>
-          <td>
-            <button onclick="viewDocumento(${d.id})">View</button>
-            <button onclick="editDocumento(${d.id})">Edit</button>
-            <button onclick="deleteDocumento(${d.id})">Delete</button>
-          </td>
+          <td>${actions}</td>
         </tr>
       `;
     });
@@ -85,6 +122,7 @@ function renderDocumenti(main, documenti, token) {
 ========================= */
 window.viewDocumento = async function (id) {
   const token = localStorage.getItem("token");
+   const CONFIG = window.__CONFIG__;
 
   try {
     const res = await fetch(`${CONFIG.API_BASE_URL}/api/documenti/${id}`, {
@@ -158,19 +196,16 @@ window.editDocumento = async function (id) {
   if (!nuovoNome) return;
 
   try {
-    const res = await fetch(
-      `${CONFIG.API_BASE_URL}/api/documenti/${id}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + token,
-        },
-        body: JSON.stringify({
-          nome: nuovoNome,
-        }),
+    const res = await fetch(`${CONFIG.API_BASE_URL}/api/documenti/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
       },
-    );
+      body: JSON.stringify({
+        nome: nuovoNome,
+      }),
+    });
 
     console.log("TOKEN:", token);
     if (!res.ok) throw new Error("Errore update");

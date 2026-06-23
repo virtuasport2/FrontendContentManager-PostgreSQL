@@ -54,6 +54,26 @@ try {
       }
       localStorage.setItem("token", data.token);
 
+      //leggo dati utenti e ruolo
+      const userResponse = await fetch(
+        `${CONFIG.API_BASE_URL}/api/auth/user/email/` + email,
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        },
+      );
+
+      debugger;
+
+      const userData = await userResponse.json();
+
+      debugger;
+
+      console.log("USER DATA:", userData);
+
+      localStorage.setItem("user", JSON.stringify(userData));
+   
       console.log("TOKEN SALVATO:", localStorage.getItem("token"));
       console.log("DATA:", data);
       alert("Login OK");
