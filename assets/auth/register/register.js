@@ -1,6 +1,6 @@
 window.addEventListener("DOMContentLoaded", () => {
 
-
+  const CONFIG = window.__CONFIG__;
 
   console.log("JS register caricato");
     const btn = document.getElementById("registerBtn");
