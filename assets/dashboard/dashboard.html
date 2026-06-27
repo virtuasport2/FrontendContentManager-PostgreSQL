@@ -1,45 +1,42 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CMS Dashboard</title>
-    <link rel="stylesheet" href="dashboard.css">
-</head>
+    <link rel="stylesheet" href="dashboard.css" />
+  </head>
 
-<body>
-
-<div class="layout">
-
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
+  <body>
+    <div class="layout">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
         <h2>CMS</h2>
 
         <button onclick="loadSection('articoli')">Articoli</button>
         <button onclick="loadSection('documenti')">Documenti</button>
         <button onclick="loadSection('tipidocumento')">Tipi Documento</button>
         <button onclick="loadSection('utenti')">Utenti</button>
-
-        <hr>
-
+        <button onclick="loadSection('logs')">Logs</button>
         <button id="logoutBtn" class="logout">Logout</button>
-    </aside>
+        <hr />
+      </aside>
 
-    <!-- MAIN -->
-    <main class="main" id="main">
+      <!-- MAIN -->
+      <main class="main" id="main">
         <button class="menu-btn" onclick="toggleMenu()">☰</button>
 
         <h2>Dashboard</h2>
         <p>Seleziona una sezione</p>
-    </main>
+      </main>
+    </div>
 
-</div>
-
-<script src="/assets/config.js"></script>
-<script src="/assets/dashboard/dashboard.js"></script>
-<script src="/assets/dashboard/articoli/articoli.js"></script>
-<script src="/assets/dashboard/documenti/documenti.js"></script>
-<script src="/assets/dashboard/tipidocumento/tipidoc.js"></script>
-<script src="utenti/utenti.js"></script>
-</body>
+    <script src="/assets/config.js"></script>
+    <script src="/assets/dashboard/dashboard.js"></script>
+    <script src="/assets/dashboard/articoli/articoli.js"></script>
+    <script src="/assets/dashboard/documenti/documenti.js"></script>
+    <script src="/assets/dashboard/tipidocumento/tipidoc.js"></script>
+    <!--<script src="utenti/utenti.js"></script> -->
+    <script src="/assets/dashboard/logs/logs.js"></script>
+  </body>
 </html>

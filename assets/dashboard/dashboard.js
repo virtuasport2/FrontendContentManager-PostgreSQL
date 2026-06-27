@@ -58,6 +58,13 @@ document.addEventListener("DOMContentLoaded", () => {
           loadUtenti(main, token);
         }
         break;
+
+      case "logs":
+        if (typeof loadLogs === "function") {
+          loadLogs(main, token);
+        }
+        break;
+
     }
   };
 });

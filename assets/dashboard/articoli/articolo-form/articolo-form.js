@@ -1,5 +1,4 @@
-const API_URL =
-  "https://api-content-manager-postgresql.onrender.com/api/articoli";
+const CONFIG = window.__CONFIG__;
 
 /* =========================
    TOKEN
@@ -12,7 +11,6 @@ function getToken() {
    CREATE (SALVA ARTICOLO)
 ========================= */
 async function salvaArticolo() {
-  const CONFIG = window.__CONFIG__;
   const token = getToken();
 
   if (!token) {
@@ -29,7 +27,7 @@ async function salvaArticolo() {
   };
 
   try {
-    const res = await fetch(`${CONFIG.API_BASE_URL}/api/documenti`, {
+    const res = await fetch(`${CONFIG.API_BASE_URL}/api/articoli`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

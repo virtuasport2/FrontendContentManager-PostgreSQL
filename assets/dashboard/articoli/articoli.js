@@ -1,9 +1,7 @@
-const CONFIG = window.__CONFIG__;
-
 async function loadArticoli(main, token) {
   main.innerHTML = "<h2>Articoli</h2><p>Caricamento...</p>";
 
-  
+  const CONFIG = window.__CONFIG__;
   try {
     const response = await fetch(`${CONFIG.API_BASE_URL}/api/articoli`, {
       headers: {
