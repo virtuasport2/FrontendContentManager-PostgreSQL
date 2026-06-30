@@ -1,56 +1,59 @@
 (function () {
-
   let socket = null;
+  let listeners = [];
 
-  function hasToken() {
-    return !!localStorage.getItem("token");
+  function isOpen() {
+    return socket && socket.readyState === WebSocket.OPEN;
   }
 
-  function initWebSocket() {
-    if (!hasToken()) return;
+  function start() {
+    const token = localStorage.getItem("token");
+    if (!token) return;
 
-    if (socket && socket.readyState === WebSocket.OPEN) return;
+    if (isOpen()) return;
 
-    socket = new WebSocket("ws://localhost:8080/logs");
+    // socket = new WebSocket(window.__CONFIG__.WS_URL);
+    socket = new WebSocket(window.__CONFIG__.WS_URL + "?token=" + token);
 
     socket.onopen = () => {
       console.log("WS OPEN");
+      console.log("STATE OPEN:", socket.readyState);
+      console.log("URL:", socket.url);
     };
 
     socket.onmessage = (event) => {
-      const logBox = document.getElementById("logBox");
-
-      // se non siamo nella pagina logs, non fare nulla
-      if (!logBox) return;
-
-      const line = document.createElement("div");
-      line.textContent = event.data;
-
-      logBox.appendChild(line);
-      logBox.scrollTop = logBox.scrollHeight;
+      console.log("RECEIVED:", event.data);
+      console.log("LISTENERS:", listeners.length);
+      listeners.forEach((cb) => cb(event.data));
     };
 
-    socket.onerror = (e) => {
-      console.log("WS ERROR", e);
-    };
+    socket.onerror = (e) => console.log("WS ERROR", e);
 
-    socket.onclose = () => {
+    socket.onclose = (e) => {
       console.log("WS CLOSED");
-      socket = null;
+      console.log("code:", e.code);
+      console.log("reason:", e.reason);
     };
+
+    console.log("WS URL =", window.__CONFIG__.WS_URL);
+    console.log("READY STATE:", socket.readyState);
   }
 
-  function closeWebSocket() {
+  function stop() {
     if (socket) {
       socket.close();
       socket = null;
     }
+    listeners = [];
   }
 
-  // ESPONI GLOBALMENTE
-  window.LogWebSocket = {
-    start: initWebSocket,
-    stop: closeWebSocket
-  };
+  function subscribe(cb) {
+    listeners.push(cb);
+  }
 
+  window.LogWebSocket = {
+    start,
+    stop,
+    subscribe,
+  };
 })();

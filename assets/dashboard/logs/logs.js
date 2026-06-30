@@ -1,5 +1,3 @@
-let logSocket = null;
-
 function loadLogs() {
   const main = document.getElementById("main");
 
@@ -12,32 +10,17 @@ function loadLogs() {
 
   const logBox = document.getElementById("logBox");
 
-  if (!logSocket || logSocket.readyState !== WebSocket.OPEN) {
-    logSocket = new WebSocket("ws://localhost:8080/logs");
-  }
+  if (!logBox) return;
 
-  logSocket.onopen = () => {
-    console.log("WS OPEN");
-  };
+  // 🔥 PRIMA: assicurati che il socket sia attivo
+  window.LogWebSocket.start();
 
-  logSocket.onmessage = (event) => {
-    console.log("RX:", event.data);
-
-    if (!logBox) return;
-
+  // 🔥 POI: subscribe
+  window.LogWebSocket.subscribe((msg) => {
     const line = document.createElement("div");
-    line.textContent = event.data;
+    line.textContent = msg;
 
     logBox.appendChild(line);
     logBox.scrollTop = logBox.scrollHeight;
-  };
-
-  logSocket.onerror = (e) => {
-    console.log("WS ERROR", e);
-  };
-
-  logSocket.onclose = () => {
-    console.log("WS CLOSED");
-    logSocket = null;
-  };
+  });
 }

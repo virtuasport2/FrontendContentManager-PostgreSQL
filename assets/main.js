@@ -42,7 +42,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   const token = localStorage.getItem("token");
-  if (token && window.LogWebSocket) {
+
+  if (token) {
     window.LogWebSocket.start();
   }
 
