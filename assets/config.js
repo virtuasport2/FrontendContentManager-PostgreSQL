@@ -1,6 +1,6 @@
 window.__CONFIG__ = {
   // REMOTO
-  API_BASE_URL: "https://api-content-manager-postgresql.onrender.com"
+  API_BASE_URL: "https://api-content-manager-postgresql.onrender.com",
   WS_URL:"wss://api-content-manager-postgresql.onrender.com/logs"
   // Anche se sembrano uguali:
   // localhost e
